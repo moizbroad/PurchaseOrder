@@ -1,0 +1,18 @@
+
+*margin{
+  margin:0 auto;
+}
+.grid{
+  max-width: 120rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.6em;
+}
+.card {
+  padding: 2rem;;
+  border: 1x solid #888;
+}
+
+.read-the-docs{
+  color:#888;
+}
