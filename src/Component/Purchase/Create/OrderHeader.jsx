@@ -22,29 +22,23 @@ const OrderHeader = () => {
       sx={{
         '& .MuiTextField-root': {
           '& fieldset': {
-            borderColor: '#003087', // Set the border color to blue
+            borderColor: '#003087',
             borderRadius: '12px',
-             // Set the border radius to round
           },
+          margin: '0', // Remove the default margin
         },
-        '& .MuiInputLabel-root': { color: '#003087' }, // Set label text color to blue
+        '& .MuiInputLabel-root': { color: '#003087' },
         display: 'flex',
-        justifyContent: 'space-between', // Add space between the three divs
+        justifyContent: 'space-between',
+        width: '100%', // Set the form to 100% width
+        gap: '4px', // Add a small space between text fields
       }}
       noValidate
       autoComplete="off"
     >
-      <div>
-        <TextField label="Order name" id="outlined-size-normal" defaultValue="Z# 12345" />
-      </div>
-
-      <div>
-        <TextField label="Order Title" id="outlined-size-normal" defaultValue="Title" />
-      </div>
-
-      <div>
-        <TextField label="Select Supplier" id="outlined-size-normal" defaultValue="Dog Chew Nation" />
-      </div>
+      <TextField label="Order name" id="outlined-size-normal" defaultValue="Z# 12345" sx={{ flexGrow: 1 }} />
+      <TextField label="Order Title" id="outlined-size-normal" defaultValue="Title" sx={{ flexGrow: 1 }} />
+      <TextField label="Select Supplier" id="outlined-size-normal" defaultValue="Dog Chew Nation" sx={{ flexGrow: 1 }} />
     </Box>
 
 
