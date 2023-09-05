@@ -68,6 +68,12 @@ const rows = [
     // Add more rows as needed
 ];
 
+
+const styles = {
+    inputField: {
+        borderRadius: '50px', // Adjust the border radius as needed
+    },
+};
 const ProductTable = () => {
     const [age, setAge] = React.useState('');
     const [page, setPage] = useState(0);
@@ -119,6 +125,7 @@ const ProductTable = () => {
                         <TextField
                             variant="outlined"
                             placeholder="Search"
+                            size="small"
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
@@ -126,6 +133,7 @@ const ProductTable = () => {
                                     </InputAdornment>
                                 ),
                             }}
+                            sx={{ borderRadius: '50px' }} // Apply the border radius directly here
                         />
                     </div>
                 </Box>
@@ -170,7 +178,7 @@ const ProductTable = () => {
                     </div>
                 </Box>
 
-                
+
 
 
 

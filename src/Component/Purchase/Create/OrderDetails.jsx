@@ -5,28 +5,38 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { useState } from 'react';
 import {
-   
-    
+
+
     Dialog,
     DialogTitle,
     DialogContent,
     DialogActions,
-  } from '@mui/material';
-  import SummaryDetail from '../Summary/SummaryDetail';
+} from '@mui/material';
+
+import SummaryDetail from '../Summary/SummaryDetail';
 
 const OrderDetails = () => {
+
+    const [checked, setChecked] = useState(false);
+
+    const handleChange = () => {
+        setChecked((prevChecked) => !prevChecked);
+    };
 
 
     const [isChecked, setIsChecked] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-  
+
     const handleProceedClick = () => {
-      setIsDialogOpen(true);
+        setIsDialogOpen(true);
     };
-  
+
     const handleCloseDialog = () => {
-      setIsDialogOpen(false);
+        setIsDialogOpen(false);
+
     };
+
+
     return (
         <Container>
 
@@ -38,63 +48,76 @@ const OrderDetails = () => {
             </Box>
 
 
-            <Box>
 
-                <Box
 
-                    display="flex"
+            <div style={{ display: 'flex' }}>
 
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 1, width: '35ch' },
-                        '& .MuiInputLabel-root': { color: 'blue' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-
+                <div>
                     <TextField
                         id="outlined-multiline-static"
                         label="Add Notes"
                         multiline
                         rows={5}
                         defaultValue="Default Value"
+                        style={{ width: '600px' }} // Set the desired width using inline CSS
+                        variant="outlined"
                     />
+                </div>
 
 
+                <div style={{ display: 'flex' , paddingLeft:'20'}}>
+                    <div style={{ marginRight: '200px' }}> {/* Add margin to create space */}
+                        <Typography variant="body" gutterBottom  paddingLeft={3}>
+                            Add Default Shipping Address
+                        </Typography>
+                    </div>
 
                     <div>
-                        <Typography variant="body" gutterBottom marginLeft={1}  >
-                            Add Default Shipping Address      </Typography>
+                        <Switch
+                            checked={checked}
+                            onChange={handleChange}
+                            color="primary"
+                        />
+                    </div>
+                </div>
 
-                            <div>
-        <Button variant="outlined">Save Draft</Button>
-        <Button variant="contained" onClick={handleProceedClick}>
-          Proceed to Summary
-        </Button>
-      </div>
 
-      {/* Dialog Box */}
-      <Dialog open={isDialogOpen} onClose={handleCloseDialog} maxWidth="lg">
-          <DialogTitle></DialogTitle>
-          <DialogContent>
-            {/* Render the SummaryDetail component when the dialog is open */}
-            {isDialogOpen && <SummaryDetail />}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleCloseDialog} variant="outlined">
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
-                      
-                 
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+                <Button variant="outlined">Save Draft</Button>
+                <div style={{ marginLeft: '8px' }}>
+                    {/* Add margin to create space between buttons */}
+                    <Button variant="contained" onClick={handleProceedClick}>
+                        Proceed to Summary
+                    </Button>
+                </div>
+            </div>
 
 
 
-                </Box>
-            </Box>
+
+            {/* Dialog Box */}
+            <Dialog open={isDialogOpen} onClose={handleCloseDialog} maxWidth="lg">
+                <DialogTitle></DialogTitle>
+                <DialogContent>
+                    {/* Render the SummaryDetail component when the dialog is open */}
+                    {isDialogOpen && <SummaryDetail />}
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseDialog} variant="outlined">
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
+
+
+
+
+
+
+
 
         </Container>
     )

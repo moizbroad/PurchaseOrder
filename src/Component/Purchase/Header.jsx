@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 //import Container from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Button ,Grid} from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -37,34 +37,34 @@ const Header = () => {
 
     return (
         <Container>
-            <Box >
-                <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'} >
-                    <Box>
-                        <Typography variant="h3" gutterBottom sx={{ color: '#003087' }} paddingLeft={2} >
-                            Purchase Order
-                        </Typography>
-                    </Box>
-
-
-                    <Box display={'flex'} justifyContent={'flex-end'} paddingLeft={50} gap={1}  >
-                        <Button variant="contained" onClick={handleClick} sx={{ backgroundColor: '#003087', color: 'white' }}>Create New Order</Button>
-                        <Button variant="outlined">Manage Supplies</Button>
-                    </Box>
+            <Box  >
+            <Grid container alignItems="center">
+            <Grid item xs={12} sm={6}>
+                <Typography variant="h3" gutterBottom sx={{ color: '#003087' }} paddingLeft={2}>
+                    Purchase Order
+                </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6} >
+                <Box display="flex" justifyContent="flex-end" gap={1} marginRight={7}>
+                    <Button variant="contained" onClick={handleClick} sx={{ backgroundColor: '#003087', color: 'white' }}>Create New Order</Button> 
+                    <Button variant="outlined">Manage Supplies</Button>
                 </Box>
+            </Grid>
+        </Grid>
 
 
                 <Box display={'flex'} justifyContent={'flex-start'} alignItems=
 
                     {'center'} paddingLeft={0} gap={1}  >
 
-                    <FormControl sx={{ m: 1,  backgroundColor: '#F8FBFF',  }}>
+                    <FormControl sx={{ m: 1, backgroundColor: '#F8FBFF', }}>
                         <Select
                             value={age}
                             onChange={handleChange}
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
                         >
-                            <MenuItem value="" sx={{ backgroundColor: '#F8FBFF'}}>
+                            <MenuItem value="" sx={{ backgroundColor: '#F8FBFF' }}>
                                 <span>Filter (All)</span>
                             </MenuItem>
                             <MenuItem value={10}>Ten</MenuItem>
@@ -76,7 +76,21 @@ const Header = () => {
 
 
 
-
+                    <div style={{ marginLeft: 700 }}>
+                        <TextField
+                            variant="outlined"
+                            placeholder="Search"
+                            size="small"
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <SearchIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                            sx={{ borderRadius: '50px' }} // Apply the border radius directly here
+                        />
+                    </div>
 
 
                 </Box>
