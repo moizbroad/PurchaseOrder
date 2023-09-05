@@ -46,16 +46,7 @@ const OrderDetails = () => {
                             Add Default Shipping Address      </Typography>
 
 
-                        <FormGroup>
-
-
-
-                            <FormControlLabel
-                                control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
-                                label="iOS style"
-                            />
-
-                        </FormGroup>
+                      
                     </div>
 
 

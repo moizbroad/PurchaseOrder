@@ -44,18 +44,18 @@ const CustomTable = () => {
     <Box sx={{ padding: '30px 150px 87px 105px' }}  >
       <TableContainer component={Paper} sx={{ backgroundColor: '#F8FBFF', paddingTop: 8 }}   >
 
-        <Typography varient='h3' gutterBottom sx={{ paddingLeft: 4, color: '##F8FBFF', paddingBottom: 6, fontWeight: 'bold'  }} >
+        <Typography varient='h3' gutterBottom sx={{ paddingLeft: 4, color: '#003087', paddingBottom: 6, fontWeight: 'bold'  }} >
           All Purchase Order
         </Typography>
         <Table aria-label="simple table" >
           {/* Table header */}
           <TableHead   >
             <TableRow style={{paddingTop:'80'}}>
-              <TableCell style={{ fontWeight: 'bold', color: 'blue', }}>PO #</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: 'blue' }}>Supplier</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: 'blue' }}>Order Date</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: 'blue' }}>Status</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: 'blue' }}>Value</TableCell>
+              <TableCell style={{ fontWeight: 'bold', color: '#003087', }}>PO #</TableCell>
+              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Supplier</TableCell>
+              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Order Date</TableCell>
+              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Status</TableCell>
+              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Value</TableCell>
             </TableRow>
           </TableHead>
 
