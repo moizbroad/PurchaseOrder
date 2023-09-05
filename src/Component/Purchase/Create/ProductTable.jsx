@@ -86,29 +86,27 @@ const ProductTable = () => {
         setAge(event.target.value);
     };
     // for styling 
-    const blueText = {
-        color: 'blue',
-    };
+
 
     return (
         <Container >
 
             <Box >
-                <Box sx={{ width: '100%', maxWidth: 500, color: 'blue', marginLeft: 0, marginTop: 3 }}>
+                <Box sx={{ width: '100%', maxWidth: 500, color: '#003087', marginLeft: 0, marginTop: 3 }}>
                     <Typography variant="h4" gutterBottom>
                         Select Products to Order
                     </Typography>
                 </Box>
 
                 <Box display={'flex'} alignItems={'center'} justifyContent={'flex-start'}>
-                    <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <FormControl sx={{ m: 1, minWidth: 120, backgroundColor: '#F8FBFF' }}>
                         <Select
                             value={age}
                             onChange={handleChange}
                             displayEmpty
                             inputProps={{ 'aria-label': ' ' }}
                         >
-                            <MenuItem value="">
+                            <MenuItem value="" >
                                 <span> Filter ALL </span>
                             </MenuItem>
                             <MenuItem value={10}>Ten</MenuItem>
@@ -134,13 +132,13 @@ const ProductTable = () => {
 
 
                 <Box>
-                    <div>
-                        <Table>
+                    <div >
+                        <Table sx={{ backgroundColor: '#F8FBFF' }}>
                             <TableHead >
                                 <TableRow>
                                     <TableCell></TableCell> {/* Empty cell for checkboxes */}
                                     {headings.map((heading) => (
-                                        <TableCell key={heading} sx={{ fontWeight: 'bold', color: 'blue' }}>{heading}</TableCell>
+                                        <TableCell key={heading} sx={{ fontWeight: 'bold', color: '#003087' }}>{heading}</TableCell>
                                     ))}
                                 </TableRow>
                             </TableHead>
@@ -160,7 +158,7 @@ const ProductTable = () => {
                                 ))}
                             </TableBody>
                         </Table>
-                        <TablePagination
+                        <TablePagination sx={{ backgroundColor: '#F8FBFF' }}
                             rowsPerPageOptions={[5, 10, 25]}
                             component="div"
                             count={rows.length}
@@ -172,56 +170,7 @@ const ProductTable = () => {
                     </div>
                 </Box>
 
-                <Box
-                    display="flex"
-
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 1, width: '35ch' },
-                        '& .MuiInputLabel-root': { color: 'blue' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <div style={{ display: 'flex', alignItems: '' }}>
-                        <TextField
-                            id="outlined-multiline-static"
-                            label="Add Notes"
-                            multiline
-                            rows={5}
-                            defaultValue="Default Value"
-                        />
-
-                    </div>
-                    <div>
-                        <Typography variant="body" gutterBottom marginLeft={1}  >
-                            Add Default Shipping Address      </Typography>
-                    </div>
-
-                    <Box sx={{
-                        '& .MuiTextField-root': { m: '2', width: '35ch' },
-                        '& .MuiInputLabel-root': { color: 'blue' },
-                    }}>
-                        <TextField
-                            id="outlined-multiline-static"
-                            label="Add Notes"
-                            multiline
-                            rows={3}
-                            defaultValue="Default Value"
-                        />
-                    </Box>
-
-                    <box>
-
-                        <Stack spacing={2} direction="row">
-                            <Button variant="text">Text</Button>
-                            <Button variant="contained">Contained</Button>
-
-                        </Stack>
-                    </box>
-
-                </Box>
-
+                
 
 
 

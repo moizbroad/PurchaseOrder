@@ -10,8 +10,8 @@ const OrderHeader = () => {
     return (
         <Container>
 
-            <Box sx={{ width: '100%', maxWidth: 500 , color:'blue',marginLeft:0, marginTop:2 }}>
-                <Typography variant="h4" gutterBottom>
+            <Box sx={{ width: '100%', maxWidth: 500 , color:'#003087',marginLeft:0, marginTop:2 }}>
+                <Typography variant="h4" gutterBottom sx={{ color: '#003087' }}>
                     Create Order
                 </Typography>
             </Box>
@@ -22,11 +22,12 @@ const OrderHeader = () => {
       sx={{
         '& .MuiTextField-root': {
           '& fieldset': {
-            borderColor: 'blue', // Set the border color to blue
-            borderRadius: '12px', // Set the border radius to round
+            borderColor: '#003087', // Set the border color to blue
+            borderRadius: '12px',
+             // Set the border radius to round
           },
         },
-        '& .MuiInputLabel-root': { color: 'blue' }, // Set label text color to blue
+        '& .MuiInputLabel-root': { color: '#003087' }, // Set label text color to blue
         display: 'flex',
         justifyContent: 'space-between', // Add space between the three divs
       }}

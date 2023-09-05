@@ -64,7 +64,7 @@ const Header = () => {
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
                         >
-                            <MenuItem value="" sx={{ backgroundColor: '#F8FBFF', color: 'blue' }}>
+                            <MenuItem value="" sx={{ backgroundColor: '#F8FBFF'}}>
                                 <span>Filter (All)</span>
                             </MenuItem>
                             <MenuItem value={10}>Ten</MenuItem>
