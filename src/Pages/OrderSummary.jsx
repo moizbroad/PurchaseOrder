@@ -1,10 +1,11 @@
 import React from 'react'
 import SummaryDetail from '../Component/Purchase/Summary/SummaryDetail'
 
-const OrderSummary = () => {
+const OrderSummary = (props) => {
+  const {handleButtonClick} = props
   return (
     <>
-        <SummaryDetail/>
+        <SummaryDetail handleButtonClick={handleButtonClick}/>
 
     </>
   )

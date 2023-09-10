@@ -2,10 +2,11 @@ import React from 'react'
 import Header from '../Component/Purchase/Header'
 import CustomTable from '../Component/Purchase/CustomTable'
 
-const PurchaseOrder = () => {
+const PurchaseOrder = (props) => {
+  const {handleButtonClick} = props
   return (
     <>
-      <Header />
+      <Header handleButtonClick={handleButtonClick} />
       <CustomTable />
 
     </>

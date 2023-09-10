@@ -3,12 +3,13 @@ import OrderHeader from '../Component/Purchase/Create/OrderHeader'
 import ProductTable from '../Component/Purchase/Create/ProductTable'
 import OrderDetails from '../Component/Purchase/Create/OrderDetails'
 
-const CreateOrder = () => {
+const CreateOrder = (props) => {
+  const {handleButtonClick}=props
   return (
     <>
     <OrderHeader/>
     <ProductTable/>
-    <OrderDetails/>
+    <OrderDetails handleButtonClick={handleButtonClick}/>
     </>
   )
 }

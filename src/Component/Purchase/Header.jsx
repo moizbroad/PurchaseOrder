@@ -16,7 +16,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from "react-router-dom";
 
 
-const Header = () => {
+const Header = (props) => {
+    const {handleButtonClick} = props
     const navigate = useNavigate();
     function handleClick() {
         navigate("/CreateOrder");
@@ -46,7 +47,8 @@ const Header = () => {
             </Grid>
             <Grid item xs={12} sm={6} >
                 <Box display="flex" justifyContent="flex-end" gap={1} marginRight={7}>
-                    <Button variant="contained" onClick={handleClick} sx={{ backgroundColor: '#003087', color: 'white' }}>Create New Order</Button> 
+                    <Button variant="contained" 
+                    onClick={()=>handleButtonClick('createOrder')} sx={{ backgroundColor: '#003087', color: 'white' }}>Create New Order</Button> 
                     <Button variant="outlined">Manage Supplies</Button>
                 </Box>
             </Grid>
