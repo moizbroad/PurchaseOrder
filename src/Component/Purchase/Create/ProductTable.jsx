@@ -9,9 +9,9 @@ import {
     Paper,
     Checkbox,
     TablePagination,
-   
+
 } from '@mui/material';
-import { useParams } from 'react-router-dom';
+
 import {
     Container,
     Box,
@@ -23,161 +23,212 @@ import {
     InputAdornment,
     Button,
     Stack,
-    
+
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AirportShuttleRoundedIcon from '@mui/icons-material/AirportShuttleRounded';
 import { blue } from '@mui/material/colors';
 
+
+
+
+
 function ProductTable() {
 
-    const {id}=useParams();
+
+    // Initialize state to track selected rows
+    const [ selectedRows  , setSelectedRows] = useState([]);
+
     const handleChange = (event) => {
         setAge(event.target.value);
     };
     const [age, setAge] = React.useState('');
     const [rows, setRows] = useState([
         {
-            id: 1,
-            col1: false, // Checkbox state
-            col2: <div style={{width: 2, height: 2, borderRadius:30, color:blue}}><AirportShuttleRoundedIcon /> </div>,
-            col3: 'Dog Towel',
-            col4: 'Catagory #1',
-            col5: '150',
-            col6: (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <button style={{ borderRadius: '50px' }}>+</button>
-                    <input
-                        placeholder='0'
-                        style={{
-                            width: '50px',
-                            fontSize: '14px',
-                            borderRadius: '50px',
-                        }}
-                    ></input>
-                    <button style={{ borderRadius: '50px' }}>-</button>
-                </div>
-            ),
+            id: '1',
+            image: '',
+            name: 'prod 1',
+            category: 'cate1',
+            stock: 120
         },
-        // Add more rows as needed
         {
-            id: 2,
-            col1: false, // Checkbox state
-            col2: <AirportShuttleRoundedIcon />,
-            col3: 'Dog Towel',
-            col4: 'Catagory #1',
-            col5: '150',
-            col6: (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <button style={{ borderRadius: '50px' }}>+</button>
-                    <input
-                        placeholder='0'
-                        style={{
-                            width: '50px',
-                            fontSize: '14px',
-                            borderRadius: '50px',
-                        }}
-                    ></input>
-                    <button style={{ borderRadius: '50px' }}>-</button>
-                </div>
-            ),
+            id: '2',
+            image: '',
+            name: 'prod 2',
+            category: 'cate2',
+            stock: 87
         },
+        {
+            id: '3',
+            image: '',
+            name: 'prod 3',
+            category: 'cate3',
+            stock: 40
+        },
+        {
+            id: '3',
+            image: '',
+            name: 'prod 3',
+            category: 'cate3',
+            stock: 40
+        },
+        // {
+        //     id: 1,
+        //     col1: false, // Checkbox state
+        //     col2: <div style={{ width: 2, height: 2, borderRadius: 30, color: blue }}><AirportShuttleRoundedIcon /> </div>,
+        //     col3: 'Dog Towel',
+        //     col4: 'Catagory #1',
+        //     col5: '150',
+        //     col6: (
+        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        //             <button style={{ borderRadius: '50px' }}>+</button>
+        //             <input
+        //                 placeholder='0'
+        //                 style={{
+        //                     width: '50px',
+        //                     fontSize: '14px',
+        //                     borderRadius: '50px',
+        //                 }}
+        //             ></input>
+        //             <button style={{ borderRadius: '50px' }}>-</button>
+        //         </div>
+        //     ),
+        // },
+        // // Add more rows as needed
+        // {
+        //     id: 2,
+        //     col1: false, // Checkbox state
+        //     col2: <AirportShuttleRoundedIcon />,
+        //     col3: 'Dog Towel',
+        //     col4: 'Catagory #1',
+        //     col5: '150',
+        //     col6: (
+        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        //             <button style={{ borderRadius: '50px' }}>+</button>
+        //             <input
+        //                 placeholder='0'
+        //                 style={{
+        //                     width: '50px',
+        //                     fontSize: '14px',
+        //                     borderRadius: '50px',
+        //                 }}
+        //             ></input>
+        //             <button style={{ borderRadius: '50px' }}>-</button>
+        //         </div>
+        //     ),
+        // },
 
-        {
-            id: 3,
-            col1: false, // Checkbox state
-            col2: <AirportShuttleRoundedIcon />,
-            col3: 'Dog Towel',
-            col4: 'Catagory #1',
-            col5: '150',
-            col6: (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <button style={{ borderRadius: '50px' }}>+</button>
-                    <input
-                        placeholder='0'
-                        style={{
-                            width: '50px',
-                            fontSize: '14px',
-                            borderRadius: '50px',
-                        }}
-                    ></input>
-                    <button style={{ borderRadius: '50px' }}>-</button>
-                </div>
-            ),
-        },
+        // {
+        //     id: 3,
+        //     col1: false, // Checkbox state
+        //     col2: <AirportShuttleRoundedIcon />,
+        //     col3: 'Dog Towel',
+        //     col4: 'Catagory #1',
+        //     col5: '150',
+        //     col6: (
+        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        //             <button style={{ borderRadius: '50px' }}>+</button>
+        //             <input
+        //                 placeholder='0'
+        //                 style={{
+        //                     width: '50px',
+        //                     fontSize: '14px',
+        //                     borderRadius: '50px',
+        //                 }}
+        //             ></input>
+        //             <button style={{ borderRadius: '50px' }}>-</button>
+        //         </div>
+        //     ),
+        // },
 
-        {
-            id: 4,
-            col1: false, // Checkbox state
-            col2: <AirportShuttleRoundedIcon />,
-            col3: 'Dog Towel',
-            col4: 'Catagory #1',
-            col5: '150',
-            col6: (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <button style={{ borderRadius: '50px' }}>+</button>
-                    <input
-                        placeholder='0'
-                        style={{
-                            width: '50px',
-                            fontSize: '14px',
-                            borderRadius: '50px',
-                        }}
-                    ></input>
-                    <button style={{ borderRadius: '50px' }}>-</button>
-                </div>
-            ),
-        },
+        // {
+        //     id: 4,
+        //     col1: false, // Checkbox state
+        //     col2: <AirportShuttleRoundedIcon />,
+        //     col3: 'Dog Towel',
+        //     col4: 'Catagory #1',
+        //     col5: '150',
+        //     col6: (
+        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        //             <button style={{ borderRadius: '50px' }}>+</button>
+        //             <input
+        //                 placeholder='0'
+        //                 style={{
+        //                     width: '50px',
+        //                     fontSize: '14px',
+        //                     borderRadius: '50px',
+        //                 }}
+        //             ></input>
+        //             <button style={{ borderRadius: '50px' }}>-</button>
+        //         </div>
+        //     ),
+        // },
 
-        {
-            id: 5,
-            col1: false, // Checkbox state
-            col2: <AirportShuttleRoundedIcon />,
-            col3: 'Dog Towel',
-            col4: 'Catagory #1',
-            col5: '150',
-            col6: (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <button style={{ borderRadius: '50px' }}>+</button>
-                    <input
-                        placeholder='0'
-                        style={{
-                            width: '50px',
-                            fontSize: '14px',
-                            borderRadius: '50px',
-                        }}
-                    ></input>
-                    <button style={{ borderRadius: '50px' }}>-</button>
-                </div>
-            ),
-        },
+        // {
+        //     id: 5,
+        //     col1: false, // Checkbox state
+        //     col2: <AirportShuttleRoundedIcon />,
+        //     col3: 'Dog Towel',
+        //     col4: 'Catagory #1',
+        //     col5: '150',
+        //     col6: (
+        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        //             <button style={{ borderRadius: '50px' }}>+</button>
+        //             <input
+        //                 placeholder='0'
+        //                 style={{
+        //                     width: '50px',
+        //                     fontSize: '14px',
+        //                     borderRadius: '50px',
+        //                 }}
+        //             ></input>
+        //             <button style={{ borderRadius: '50px' }}>-</button>
+        //         </div>
+        //     ),
+        // },
 
-        {
-            id: 6,
-            col1: false, // Checkbox state
-            col2: <AirportShuttleRoundedIcon />,
-            col3: 'Dog Towel',
-            col4: 'Catagory #1',
-            col5: '150',
-            col6: (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                    <button style={{ borderRadius: '50px' }}>+</button>
-                    <input
-                        placeholder='0'
-                        style={{
-                            width: '50px',
-                            fontSize: '14px',
-                            borderRadius: '50px',
-                        }}
-                    ></input>
-                    <button style={{ borderRadius: '50px' }}>-</button>
-                </div>
-            ),
-        },
+        // {
+        //     id: 6,
+        //     col1: false, // Checkbox state
+        //     col2: <AirportShuttleRoundedIcon />,
+        //     col3: 'Dog Towel',
+        //     col4: 'Catagory #1',
+        //     col5: '150',
+        //     col6: (
+        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        //             <button style={{ borderRadius: '50px' }}>+</button>
+        //             <input
+        //                 placeholder='0'
+        //                 style={{
+        //                     width: '50px',
+        //                     fontSize: '14px',
+        //                     borderRadius: '50px',
+        //                 }}
+        //             ></input>
+        //             <button style={{ borderRadius: '50px' }}>-</button>
+        //         </div>
+        //     ),
+        // },
     ]);
 
 
-    
+    // Event handler to toggle row selection
+    const handleRowSelect = (row) => {
+        // Check if the row is already selected
+        const isSelected = selectedRows.includes(row);
+        if (isSelected) {
+            // If selected, remove it from the selectedRows array
+            setSelectedRows(selectedRows.filter(selectedRow => selectedRow !== row));
+        } else {
+            // If not selected, add it to the selectedRows array
+            setSelectedRows([...selectedRows, row]);
+        }
+    };
+
+
+
+
+
     const [selectAll, setSelectAll] = useState(false);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -212,10 +263,12 @@ function ProductTable() {
         setPage(0);
     };
 
+
+
     return (
 
-            <Container>
-        
+        <Container>
+
             <Box sx={{ width: '100%', maxWidth: 500, color: '#003087', marginLeft: 0, marginTop: 3 }}>
                 <Typography variant="h4" gutterBottom>
                     Select Products to Order
@@ -257,7 +310,7 @@ function ProductTable() {
             </Box>
 
             <div>
-                <TableContainer component={Paper} style={{ margin: '20px' }}>
+                <TableContainer component={Paper} style={{ margin: '20px', backgroundColor: '#F8FBFF' }}>
                     <Table aria-label='customized table'>
                         <TableHead>
                             <TableRow>
@@ -286,11 +339,25 @@ function ProductTable() {
                                                 onChange={() => handleCheckboxClick(row.id)}
                                             />
                                         </TableCell>
-                                        <TableCell>{row.col2}</TableCell>
-                                        <TableCell>{row.col3}</TableCell>
-                                        <TableCell>{row.col4}</TableCell>
-                                        <TableCell>{row.col5}</TableCell>
-                                        <TableCell>{row.col6}</TableCell>
+                                        <TableCell>{<AirportShuttleRoundedIcon />}</TableCell>
+                                        <TableCell>{row.name}</TableCell>
+                                        <TableCell>{row.category}</TableCell>
+                                        <TableCell>{row.stock}</TableCell>
+                                        <TableCell>{
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                                <button style={{ borderRadius: '50px', color: 'White', backgroundColor: '#003087' }}>+</button>
+                                                <input
+                                                    placeholder='0'
+                                                    style={{
+                                                        width: '50px',
+                                                        fontSize: '14px',
+                                                        borderRadius: '50px',
+                                                    }}
+                                                ></input>
+                                                <button style={{ borderRadius: '50px', color: 'White', backgroundColor: '#003087' }}>-</button>
+                                            </div>
+
+                                        }</TableCell>
                                     </TableRow>
                                 ))}
                         </TableBody>
@@ -308,8 +375,8 @@ function ProductTable() {
                 />
             </div>
 
-            </Container>
-            );
+        </Container>
+    );
 }
 
-            export default ProductTable;
+export default ProductTable;

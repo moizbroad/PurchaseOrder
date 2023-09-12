@@ -18,7 +18,7 @@ const OrderDetails = (props) => {
     return (
         <Container>
             <Box sx={{ width: '100%', maxWidth: 500, color: '#003087', marginLeft: 0, marginTop: 2 }}>
-                <Typography variant="h5" gutterBottom sx={{ color: '#003087' }}>
+                <Typography variant="h5" gutterBottom sx={{ color: '#003087'}}>
                     Create Details
                 </Typography>
             </Box>

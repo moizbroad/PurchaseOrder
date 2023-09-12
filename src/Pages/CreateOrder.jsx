@@ -4,12 +4,19 @@ import ProductTable from '../Component/Purchase/Create/ProductTable'
 import OrderDetails from '../Component/Purchase/Create/OrderDetails'
 
 const CreateOrder = (props) => {
-  const {handleButtonClick}=props
+  const {handleButtonClick ,selectedRows,setSelectedRows}=props
+ 
   return (
     <>
-    <OrderHeader/>
-    <ProductTable/>
-    <OrderDetails handleButtonClick={handleButtonClick}/>
+    <OrderHeader  handleButtonClick={handleButtonClick}/>
+    <ProductTable 
+     selectedRows={selectedRows}
+    setSelectedRows={setSelectedRows} 
+    />
+    
+    <OrderDetails handleButtonClick={handleButtonClick}
+    
+    />
     </>
   )
 }

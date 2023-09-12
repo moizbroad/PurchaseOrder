@@ -3,9 +3,11 @@ import SummaryDetail from '../Component/Purchase/Summary/SummaryDetail'
 
 const OrderSummary = (props) => {
   const {handleButtonClick} = props
+  const {selectedRows} = props
   return (
     <>
-        <SummaryDetail handleButtonClick={handleButtonClick}/>
+        <SummaryDetail handleButtonClick={handleButtonClick}
+        />
 
     </>
   )
