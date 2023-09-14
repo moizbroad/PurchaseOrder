@@ -27,17 +27,26 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AirportShuttleRoundedIcon from '@mui/icons-material/AirportShuttleRounded';
-import { blue } from '@mui/material/colors';
+//import { blue } from '@mui/material/colors';
 
 
 
 
 
-function ProductTable() {
+function ProductTable(props) {
+    const { selectedRows, setSelectedRows  } = props;
+    // keep track selected data 
+  //  const [selectedData, setSelectedData] = useState([]);
+
 
 
     // Initialize state to track selected rows
-    const [ selectedRows  , setSelectedRows] = useState([]);
+   // const [selectedRows, setSelectedRows] = useState([]);
+    // const [selectedRowsData, setSelectedRowsData] = useState([]);
+
+    // ensure checkbox is selected
+    const [selectAll, setSelectAll] = useState(true); // Initialize to true
+
 
     const handleChange = (event) => {
         setAge(event.target.value);
@@ -46,6 +55,7 @@ function ProductTable() {
     const [rows, setRows] = useState([
         {
             id: '1',
+            col1: false,
             image: '',
             name: 'prod 1',
             category: 'cate1',
@@ -53,6 +63,7 @@ function ProductTable() {
         },
         {
             id: '2',
+            col1: false,
             image: '',
             name: 'prod 2',
             category: 'cate2',
@@ -60,17 +71,19 @@ function ProductTable() {
         },
         {
             id: '3',
+            col1: false,
             image: '',
             name: 'prod 3',
             category: 'cate3',
             stock: 40
         },
         {
-            id: '3',
+            id: '4',
+            col1: false,
             image: '',
             name: 'prod 3',
             category: 'cate3',
-            stock: 40
+            stock: 30
         },
         // {
         //     id: 1,
@@ -229,18 +242,19 @@ function ProductTable() {
 
 
 
-    const [selectAll, setSelectAll] = useState(false);
+    //const [selectAll, setSelectAll] = useState(false);
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleSelectAllClick = () => {
         const updatedRows = rows.map((row) => ({
             ...row,
-            col1: !selectAll, // Update the checkbox state
+            col1: !selectAll, // Toggle the checkbox state
         }));
         setRows(updatedRows);
-        setSelectAll(!selectAll);
+        setSelectAll(!selectAll); // Toggle the selectAll state
     };
+
 
     const handleCheckboxClick = (id) => {
         const updatedRows = rows.map((row) =>
@@ -248,11 +262,42 @@ function ProductTable() {
                 ? {
                     ...row,
                     col1: !row.col1, // Toggle the checkbox state
+                    placeholder: row.col1 ? '0' : row.stock.toString(), // Set the placeholder to stock value when checked, '0' when unchecked
+                }
+                : row
+        );
+        setRows(updatedRows);
+        // Filter the selected rows and update selectedRowsData
+        const selectedData = updatedRows.filter((row) => row.col1);
+        setSelectedRows(selectedData);
+    };
+
+    const handleIncrement = (id) => {
+        const updatedRows = rows.map((row) =>
+            row.id === id
+                ? {
+                    ...row,
+                    placeholder: (parseInt(row.placeholder) + 1).toString(),
                 }
                 : row
         );
         setRows(updatedRows);
     };
+
+    const handleDecrement = (id) => {
+        const updatedRows = rows.map((row) =>
+            row.id === id && parseInt(row.placeholder) > 0 // Check if the row is selected and placeholder is greater than 0
+                ? {
+                    ...row,
+                    placeholder: (parseInt(row.placeholder) - 1).toString(),
+                }
+                : row
+        );
+        setRows(updatedRows);
+    };
+
+
+
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -270,7 +315,7 @@ function ProductTable() {
         <Container>
 
             <Box sx={{ width: '100%', maxWidth: 500, color: '#003087', marginLeft: 0, marginTop: 3 }}>
-                <Typography variant="h4" gutterBottom>
+                <Typography variant="h4" gutterBottom style={{ fontWeight: '150' }}>
                     Select Products to Order
                 </Typography>
             </Box>
@@ -292,7 +337,7 @@ function ProductTable() {
                     </Select>
                 </FormControl>
 
-                <div style={{ marginLeft: 700 }}>
+                <div style={{ marginLeft: 758 }}>
                     <TextField
                         variant="outlined"
                         placeholder="Search"
@@ -303,6 +348,7 @@ function ProductTable() {
                                     <SearchIcon />
                                 </InputAdornment>
                             ),
+                            sx: { borderRadius: '10px', color: 'blue', backgroundColor: '#F8FBFF', border: '1px solid #F8FBFF' }
                         }}
                         sx={{ borderRadius: '50px' }} // Apply the border radius directly here
                     />
@@ -310,16 +356,17 @@ function ProductTable() {
             </Box>
 
             <div>
-                <TableContainer component={Paper} style={{ margin: '20px', backgroundColor: '#F8FBFF' }}>
+                <TableContainer component={Paper} style={{ marginTop: '16px', backgroundColor: '#F8FBFF' }}>
                     <Table aria-label='customized table'>
                         <TableHead>
                             <TableRow>
                                 <TableCell>
                                     <Checkbox
-                                        checked={selectAll}
+                                        checked={selectAll} // Use selectAll to determine the checked state
                                         onChange={handleSelectAllClick}
                                         inputProps={{ 'aria-label': 'select all rows' }}
                                     />
+
                                 </TableCell>
                                 <TableCell>Image</TableCell>
                                 <TableCell>Product Name</TableCell>
@@ -345,16 +392,39 @@ function ProductTable() {
                                         <TableCell>{row.stock}</TableCell>
                                         <TableCell>{
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                                <button style={{ borderRadius: '50px', color: 'White', backgroundColor: '#003087' }}>+</button>
+                                                <button
+                                                    onClick={() => handleIncrement(row.id)}
+                                                    style={{
+                                                        borderRadius: '50px',
+                                                        color: 'White',
+                                                        backgroundColor: '#003087',
+                                                    }}
+                                                    disabled={parseInt(row.placeholder) >= row.stock} // Disable the button when placeholder is greater than or equal to stock
+                                                >
+                                                    +
+                                                </button>
                                                 <input
-                                                    placeholder='0'
+                                                    placeholder={row.placeholder || '0'}
                                                     style={{
                                                         width: '50px',
                                                         fontSize: '14px',
                                                         borderRadius: '50px',
                                                     }}
-                                                ></input>
-                                                <button style={{ borderRadius: '50px', color: 'White', backgroundColor: '#003087' }}>-</button>
+                                                    readOnly // Make the input field read-only to prevent manual editing
+                                                />
+                                                <button
+                                                    onClick={() => handleDecrement(row.id)}
+                                                    style={{
+                                                        borderRadius: '50px',
+                                                        color: 'White',
+                                                        backgroundColor: '#003087',
+                                                    }}
+                                                    disabled={row.placeholder === '0'} // Disable the button when placeholder is '0'
+                                                >
+                                                    -
+                                                </button>
+
+
                                             </div>
 
                                         }</TableCell>

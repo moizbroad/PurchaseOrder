@@ -5,18 +5,76 @@ import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Table
 
 const CustomTable = () => {
   const data = [
-    { id: 1, name: 'John', value: '$123' },
-    { id: 2, name: 'Jane', value: '$123' },
-    { id: 3, name: 'Doe', value: '$123' },
-    { id: 4, name: 'Doe', value: '$123' },
-    { id: 5, name: ' Doe', value: '$123' },
-    { id: 6, name: ' Doe', value: '$123' },
-    { id: 7, name: ' Doe', value: '$123' },
-    { id: 8, name: ' Doe', value: '$123' },
-    { id: 9, name: ' Doe', value: '$123' },
-    { id: 10, name: ' Doe', value: '$123' },
-    { id: 11, name: ' Doe', value: '$123' },
-    // ... more data ...
+    { id: 1,
+      Title: 'P0 #1',
+      supplier: 'John',
+      OrderDate: '5/12/2001',
+      Status: 'Arrived' ,
+      value: '$178.35'
+    },
+    { id: 2,
+      Title: 'P0 #2',
+      supplier: 'smith',
+      OrderDate: '5/12/2001',
+      Status: 'Shipped' ,
+      value: '$233.35'
+    },
+    { id: 3,
+      Title: 'P0 #3',
+      supplier: 'John',
+      OrderDate: '7/12/2001',
+      Status: 'Delivered' ,
+      value: '$768.35'
+    },
+    { id: 4,
+      Title: 'P0 #4',
+      supplier: 'David Wood',
+      OrderDate: '5/12/2001',
+      Status: 'Arrived' ,
+      value: '$178.35'
+    },
+    { id: 5,
+      Title: 'P0 #5',
+      supplier: 'Ali',
+      OrderDate: '9/12/2001',
+      Status: 'Shipped ' ,
+      value: '$788.35'
+    },
+    // { id: 6,
+    //   Title: 'P0 #6',
+    //   supplier: 'Moiz Khan',
+    //   OrderDate: '12/12/2001',
+    //   Status: 'In Transit' ,
+    //   value: '$228.35'
+    // },
+    // { id: 7,
+    //   Title: 'P0 #7',
+    //   supplier: 'Jamshad',
+    //   OrderDate: '9/12/2001',
+    //   Status: 'Arrived' ,
+    //   value: '$222.35'
+    // },
+    // { id: 8,
+    //   Title: 'P0 #8',
+    //   supplier: 'Jamshad',
+    //   OrderDate: '9/12/2001',
+    //   Status: 'Arrived' ,
+    //   value: '$222.35'
+    // },
+    // { id: 9,
+    //   Title: 'P0 #9',
+    //   supplier: 'Jamshad',
+    //   OrderDate: '9/12/2001',
+    //   Status: 'Arrived' ,
+    //   value: '$222.35'
+    // },
+    // { id: 10,
+    //   Title: 'P0 #10',
+    //   supplier: 'Jamshad',
+    //   OrderDate: '9/12/2001',
+    //   Status: 'Arrived' ,
+    //   value: '$222.35'
+    // },
   ];
 
   // Step 1: Define the number of rows per page options
@@ -41,21 +99,22 @@ const CustomTable = () => {
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
   return (
-    <Box sx={{ padding: '30px 150px 87px 105px' }}  >
-      <TableContainer component={Paper} sx={{ backgroundColor: '#F8FBFF', paddingTop: 8 }}   >
 
-        <Typography varient='h3' gutterBottom sx={{ paddingLeft: 4, color: '#003087', paddingBottom: 6, fontWeight: 'bold'  }} >
+    <Box sx={{ padding: '30px 230px 87px 172px' }}  >
+      <TableContainer component={Paper} sx={{ backgroundColor: '#F8FBFF', paddingTop: 4 }}  >
+
+        <Typography variant="h5" gutterBottom sx={{ paddingLeft: 4, color: '#003087', paddingBottom: 6, fontWeight: 'bold'  }} >
           All Purchase Order
         </Typography>
         <Table aria-label="simple table" >
           {/* Table header */}
           <TableHead   >
             <TableRow style={{paddingTop:'80'}}>
-              <TableCell style={{ fontWeight: 'bold', color: '#003087', }}>PO #</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Supplier</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Order Date</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Status</TableCell>
-              <TableCell style={{ fontWeight: 'bold', color: '#003087' }}>Value</TableCell>
+              <TableCell style={{ fontWeight: 'bold'  }}>PO #</TableCell>
+              <TableCell style={{ fontWeight: 'bold'  }}>Supplier</TableCell>
+              <TableCell style={{ fontWeight: 'bold'  }}>Order Date</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }}>Status</TableCell>
+              <TableCell style={{ fontWeight: 'bold'  }}>Value</TableCell>
             </TableRow>
           </TableHead>
 
@@ -66,10 +125,10 @@ const CustomTable = () => {
               : data
             ).map((row) => (
               <TableRow key={row.id}>
-                <TableCell>{row.id}</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.Title}</TableCell>
+                <TableCell>{row.supplier}</TableCell>
+                <TableCell>{row.OrderDate}</TableCell>
+                <TableCell>{row.Status}</TableCell>
                 <TableCell>{row.value}</TableCell>
 
               </TableRow>

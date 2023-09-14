@@ -7,9 +7,11 @@ const AllOrder = () => {
   const [activeComponent, setActiveComponent] = useState('purchaseOrder');
 
   const handleButtonClick = (componentName ) => {
+
     setActiveComponent(componentName);
   };
-  const [ selectedRows  , setSelectedRows] = useState([]);
+ const [ selectedRows  , setSelectedRows] = useState([]);
+ // const [selectedRowsData, setSelectedRowsData] = useState([]);
 
   const handleCreateNewOrderClick = () => {
     // This function is called from PurchaseOrder
@@ -26,13 +28,16 @@ const AllOrder = () => {
           <PurchaseOrder handleButtonClick={handleButtonClick} />
         )}
         {activeComponent === 'createOrder' && (<CreateOrder handleButtonClick={handleButtonClick} 
-        selectedRows={selectedRows}
+        selectedRows={selectedRows} 
         setSelectedRows={setSelectedRows}
         
          />)}
-
+    
         {activeComponent === 'orderSummary' && (<OrderSummary handleButtonClick={handleButtonClick} 
-        selectedRows={selectedRows} />)}
+        
+        selectedRows={selectedRows} 
+        setSelectedRows={setSelectedRows}
+        />)}
       </div>
     </div>
   );

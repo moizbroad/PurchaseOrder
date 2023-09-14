@@ -1,15 +1,34 @@
 import React from 'react'
-import { Container, Box, Typography, Divider, Select, InputLabel, Button } from '@mui/material'
+import { Container, Box, Typography, Divider, Select, InputLabel, Button,IconButton } from '@mui/material'
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Checkbox from '@mui/material/Checkbox';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import {
+   
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+} from '@mui/material';
 
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-const SummaryDetail = () => {
+const SummaryDetail = (props) => {
+    const { handleButtonClick } = props
+    //const {selectedRowsData} = props
+    const { selectedRows  } = props;
+
+
+    const handleIconClick = () => {
+      handleButtonClick('createOrder'); // Change the component name as needed
+    };
 
     const [age, setAge] = React.useState('');
 
@@ -18,10 +37,19 @@ const SummaryDetail = () => {
     };
     return (
         <Container>
-            <Box sx={{ width: 800, height: 600 }}>
-                <Typography variant="h5" gutterBottom marginBottom={5}>
-                    Summary Details
-                </Typography>
+            <Box sx={{ width: "100%",  }}>
+                
+
+            <Box sx={{ width: '100%', color: '#003087', marginTop: 4, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }} >
+        <div>
+          <IconButton onClick={handleIconClick}>
+            <KeyboardBackspaceIcon />
+          </IconButton>
+        </div>
+        <Typography variant="h4" gutterBottom sx={{ color: '#003087', paddingLeft: 2 }}>
+         Summary Details
+        </Typography>
+      </Box>
 
                 <Divider />
 
@@ -70,49 +98,44 @@ const SummaryDetail = () => {
                 </div>
 
 
-                <Box>
-                    <Typography variant="h5" gutterBottom marginBottom={3} marginTop={3}>
+                <Box sx={{ }}> 
+                    <Typography variant="h5" gutterBottom marginBottom={3} marginTop={3}
+                    sx={{color: '#003087'}}>
                         Order Item
                     </Typography>
 
+
+                    <div>
+           
+            <TableContainer component={Paper}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Category</TableCell>
+                            <TableCell>Stock</TableCell>
+                            {/* Add more table headers as needed */}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {selectedRows.map((row) => (
+                            <TableRow key={row.id}>
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.name}</TableCell>
+                                <TableCell>{row.category}</TableCell>
+                                <TableCell>{row.stock}</TableCell>
+                                {/* Add more table cells as needed */}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </div>
+
                     <Divider />
 
-                    <Box display="flex" alignItems="center" flexDirection="row" gap={0}>
-                        <Box>
-                            <Checkbox {...label} />
-                        </Box>
-                        <Box sx={{ display: 'flex', gap: '100px', }}>
-                            <p style={{ width: '100%', margin: 0 }}>Supplier</p> {/* Adjust width as needed */}
-                            <p style={{ width: '100%', margin: 0 }}>Dog Chew Nation</p> {/* Adjust width as needed */}
-                            <p style={{ width: '100%', margin: 0 }}>Dog Chew Nation</p> {/* Adjust width as needed */}
-                        </Box>
-                    </Box>
-                    <Divider />
-
-
-
-                    <Box display="flex" alignItems="center" flexDirection="row" gap={0}>
-                        <Box>
-                            <Checkbox {...label} />
-                        </Box>
-                        <Box sx={{ display: 'flex', gap: '100px', }}>
-                            <p style={{ width: '100%', margin: 0 }}>Supplier</p> {/* Adjust width as needed */}
-                            <p style={{ width: '100%', margin: 0 }}>Dog Chew Nation</p> {/* Adjust width as needed */}
-                            <p style={{ width: '100%', margin: 0 }}>Dog Chew Nation</p> {/* Adjust width as needed */}
-                        </Box>
-                    </Box>
-                    <Divider />
-
-                    <Box display="flex" alignItems="center" flexDirection="row" gap={0}>
-                        <Box>
-                            <Checkbox {...label} />
-                        </Box>
-                        <Box sx={{ display: 'flex', gap: '100px', }}>
-                            <p style={{ width: '100%', margin: 0 }}>Supplier</p> {/* Adjust width as needed */}
-                            <p style={{ width: '100%', margin: 0 }}>Dog Chew Nation</p> {/* Adjust width as needed */}
-                            <p style={{ width: '100%', margin: 0 }}>Dog Chew Nation</p> {/* Adjust width as needed */}
-                        </Box>
-                    </Box>
+                   
 
 
 
@@ -122,7 +145,7 @@ const SummaryDetail = () => {
                 <Divider />
 
                 <Box>
-                    <Typography variant="h5" gutterBottom marginBottom={3} marginTop={3}>
+                    <Typography variant="h5" gutterBottom marginBottom={3} marginTop={3}sx={{color: '#003087'}}>
                         Cost
                     </Typography>
 
@@ -160,9 +183,10 @@ const SummaryDetail = () => {
                 <Divider />
 
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4, marginRight: 4 }}>
-                    <Button variant="outlined" style={{ marginRight: '14px' }}>Revised Order</Button>
-                    <Button variant="contained">Share & Save</Button>
-                </Box>
+  <Button variant="outlined" style={{ width: '180px', marginRight: '14px' }}>Revised Order</Button>
+  <Button variant="contained" style={{ width: '180px' }}>Share & Save</Button>
+</Box>
+
 
 
             </Box>

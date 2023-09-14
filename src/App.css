@@ -15,8 +15,8 @@
   border: 1x solid #888;
 }
 
-.read-the-docs{
-  color:#888;
+.custom-button {
+  border-radius: 10px; /* Adjust the value as needed */
 }
 
 

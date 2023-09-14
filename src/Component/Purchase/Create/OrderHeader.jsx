@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Container, Box, TextField, Typography, IconButton, } from '@mui/material'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import { Navigator } from 'react-router-dom';
-import PurchaseOrder from '../../../Pages/PurchaseOrder';
+//import { Navigator } from 'react-router-dom';
+//import PurchaseOrder from '../../../Pages/PurchaseOrder';
 
 
 
@@ -17,12 +17,12 @@ const OrderHeader = (props) => {
     <Container>
 
       <Box sx={{ width: '100%', color: '#003087', marginTop: 4, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }} >
-        <div>
-          <IconButton onClick={handleIconClick}>
+        <div >
+          <IconButton onClick={handleIconClick} style={{color: '#003087'}}>
             <KeyboardBackspaceIcon />
           </IconButton>
         </div>
-        <Typography variant="h4" gutterBottom sx={{ color: '#003087', paddingLeft: 2 }}>
+        <Typography variant="h4" gutterBottom sx={{ color: '#003087', paddingLeft: 2 ,fontWeight: 'bold'}}>
           Create Order
         </Typography>
       </Box>
