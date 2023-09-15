@@ -73,12 +73,13 @@ const Header = (props) => {
 
                     {'center'} paddingLeft={0} gap={1}  >
 
-                    <FormControl sx={{ mt: 1, backgroundColor: '#F8FBFF', }}>
+                    <FormControl sx={{ mt: 1, backgroundColor: '#F8FBFF'}}>
                         <Select
                             value={age}
                             onChange={handleChange}
                             displayEmpty
                             inputProps={{ 'aria-label': 'Without label' }}
+                            sx={{ borderRadius: '10px' }}
                         >
                             <MenuItem value="" sx={{ backgroundColor: '#F8FBFF' }}>
                                 <span>Filter (All)</span>

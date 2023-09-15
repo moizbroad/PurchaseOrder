@@ -7,15 +7,21 @@ const AllOrder = () => {
   const [activeComponent, setActiveComponent] = useState('purchaseOrder');
 
   const handleButtonClick = (componentName ) => {
-
-    setActiveComponent(componentName);
+   setActiveComponent(componentName);
   };
+
  const [ selectedRows  , setSelectedRows] = useState([]);
- // const [selectedRowsData, setSelectedRowsData] = useState([]);
+ const [selectedSupplier, setSelectedSupplier] = useState({ id: '', label: '' });
+ // stored custom text field data 
+ const [orderTitle, setOrderTitle] = useState('');
 
   const handleCreateNewOrderClick = () => {
     // This function is called from PurchaseOrder
     handleButtonClick('createOrder');
+  };
+
+  const handleSupplierSelection = (selectedData) => {
+    setSelectedSupplier(selectedData);
   };
 
 
@@ -30,13 +36,19 @@ const AllOrder = () => {
         {activeComponent === 'createOrder' && (<CreateOrder handleButtonClick={handleButtonClick} 
         selectedRows={selectedRows} 
         setSelectedRows={setSelectedRows}
-        
+        handleSupplierSelection={handleSupplierSelection}
+        setSelectedSupplier={setSelectedSupplier}
+        selectedSupplier={selectedSupplier} 
+
+        orderTitle={orderTitle}
+        setOrderTitle={setOrderTitle}
          />)}
     
         {activeComponent === 'orderSummary' && (<OrderSummary handleButtonClick={handleButtonClick} 
         
         selectedRows={selectedRows} 
-        setSelectedRows={setSelectedRows}
+        setSelectedRows={setSelectedRows} 
+        selectedSupplier={selectedSupplier} 
         />)}
       </div>
     </div>

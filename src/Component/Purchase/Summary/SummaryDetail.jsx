@@ -1,12 +1,12 @@
 import React from 'react'
-import { Container, Box, Typography, Divider, Select, InputLabel, Button,IconButton } from '@mui/material'
+import { Container, Box, Typography, Divider, Select, InputLabel, Button, IconButton } from '@mui/material'
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Checkbox from '@mui/material/Checkbox';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import {
-   
+
     Table,
     TableBody,
     TableCell,
@@ -21,13 +21,13 @@ import {
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const SummaryDetail = (props) => {
-    const { handleButtonClick } = props
+    const { handleButtonClick, selectedRows, selectedSupplier } = props
     //const {selectedRowsData} = props
-    const { selectedRows  } = props;
+
 
 
     const handleIconClick = () => {
-      handleButtonClick('createOrder'); // Change the component name as needed
+        handleButtonClick('createOrder'); // Change the component name as needed
     };
 
     const [age, setAge] = React.useState('');
@@ -37,32 +37,32 @@ const SummaryDetail = (props) => {
     };
     return (
         <Container>
-            <Box sx={{ width: "100%",  }}>
-                
+            <Box sx={{ width: "100%", }}>
 
-            <Box sx={{ width: '100%', color: '#003087', marginTop: 4, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }} >
-        <div>
-          <IconButton onClick={handleIconClick}>
-            <KeyboardBackspaceIcon />
-          </IconButton>
-        </div>
-        <Typography variant="h4" gutterBottom sx={{ color: '#003087', paddingLeft: 2 }}>
-         Summary Details
-        </Typography>
-      </Box>
 
-                <Divider />
-
-                <Box display="flex" alignItems="center" flexDirection="row">
-                    <Box gap={1}>
-                        <SupportAgentIcon />
-                    </Box>
-                    <Box display="flex" flexGrow={1}> {/* Use flexGrow to take up available width */}
-                        <p style={{ width: '50%', margin: 0 }}>Shipping</p> {/* Adjust width as needed */}
-                        <p style={{ width: '50%', margin: 0 }}>XXX</p> {/* Adjust width as needed */}
-                    </Box>
+                <Box sx={{ width: '100%', color: '#003087', marginTop: 4, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }} >
+                    <div>
+                        <IconButton onClick={handleIconClick}>
+                            <KeyboardBackspaceIcon />
+                        </IconButton>
+                    </div>
+                    <Typography variant="h4" gutterBottom sx={{ color: '#003087', paddingLeft: 0, fontWeight: 'bold' }}>
+                        Summary Details
+                    </Typography>
                 </Box>
+
                 <Divider />
+
+                <Box display="flex" flexGrow={1} marginRight="4">
+                    <p style={{ width: '50%', margin: 0 }}>Supplier:</p>
+                    <p style={{ width: '50%', margin: 0 }}>
+                        {selectedSupplier ? selectedSupplier.label : 'No supplier selected'}
+                    </p>
+                </Box>
+
+                <Divider />
+
+
 
                 <Box display="flex" alignItems="center" flexDirection="row">
                     <Box gap={1}>
@@ -98,44 +98,52 @@ const SummaryDetail = (props) => {
                 </div>
 
 
-                <Box sx={{ }}> 
+                <Box sx={{}}>
                     <Typography variant="h5" gutterBottom marginBottom={3} marginTop={3}
-                    sx={{color: '#003087'}}>
+                        sx={{ color: '#003087', fontWeight: 'bold' }}>
                         Order Item
                     </Typography>
 
 
-                    <div>
-           
-            <TableContainer component={Paper}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Category</TableCell>
-                            <TableCell>Stock</TableCell>
-                            {/* Add more table headers as needed */}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {selectedRows.map((row) => (
-                            <TableRow key={row.id}>
-                                <TableCell>{row.id}</TableCell>
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.category}</TableCell>
-                                <TableCell>{row.stock}</TableCell>
-                                {/* Add more table cells as needed */}
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
+
+                    <div style={{ backgroundColor: '#F8FBFF' }}>
+
+                        <TableContainer component={Paper} >
+                            <Table style={{ backgroundColor: '#F8FBFF', fontWeight: 'bold' }}>
+                                <TableHead>
+                                    <TableRow  >
+                                        <TableCell style={{ fontWeight: 'bold' }} ><Checkbox />
+                                        </TableCell>
+                                        <TableCell style={{ fontWeight: 'bold' }}>
+                                            Name
+                                        </TableCell>
+                                        <TableCell style={{ fontWeight: 'bold' }}>
+                                            Category
+                                        </TableCell>
+                                        <TableCell style={{ fontWeight: 'bold' }}>
+                                            Stock
+                                        </TableCell>
+                                        {/* Add more table headers as needed */}
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {selectedRows.map((row) => (
+                                        <TableRow key={row.id}>
+                                            <TableCell><checkbox /></TableCell>
+                                            <TableCell>{row.name}</TableCell>
+                                            <TableCell>{row.category}</TableCell>
+                                            <TableCell>{row.stock}</TableCell>
+                                            {/* Add more table cells as needed */}
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </div>
 
                     <Divider />
 
-                   
+
 
 
 
@@ -145,7 +153,7 @@ const SummaryDetail = (props) => {
                 <Divider />
 
                 <Box>
-                    <Typography variant="h5" gutterBottom marginBottom={3} marginTop={3}sx={{color: '#003087'}}>
+                    <Typography variant="h5" gutterBottom marginBottom={3} marginTop={3} sx={{ color: '#003087', fontWeight: 'bold' }}>
                         Cost
                     </Typography>
 
@@ -183,9 +191,9 @@ const SummaryDetail = (props) => {
                 <Divider />
 
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4, marginRight: 4 }}>
-  <Button variant="outlined" style={{ width: '180px', marginRight: '14px' }}>Revised Order</Button>
-  <Button variant="contained" style={{ width: '180px' }}>Share & Save</Button>
-</Box>
+                    <Button variant="outlined" style={{ width: '180px', marginRight: '14px' }}>Revised Order</Button>
+                    <Button variant="contained" style={{ width: '180px' }}>Share & Save</Button>
+                </Box>
 
 
 

@@ -18,7 +18,7 @@ const OrderDetails = (props) => {
     return (
         <Container>
             <Box sx={{ width: '100%', maxWidth: 500, color: '#003087', marginLeft: 0, marginTop: 2 }}>
-                <Typography variant="h5" gutterBottom sx={{ color: '#003087' }}>
+                <Typography variant="h5" gutterBottom sx={{ color: '#003087' , fontWeight:'bold'}}>
                     Create Details
                 </Typography>
             </Box>
@@ -38,7 +38,10 @@ const OrderDetails = (props) => {
                                 multiline
                                 rows={7}
                                 defaultValue="Default Value"
-                                style={{ width: '600px', borderRadius: '10px', }}
+                                sx={{
+                                    width: '600px',
+                                    borderRadius: '10px',
+                                }}
                                
                                 variant="outlined"
                                

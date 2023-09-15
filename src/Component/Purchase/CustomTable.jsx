@@ -110,7 +110,7 @@ const CustomTable = () => {
           {/* Table header */}
           <TableHead   >
             <TableRow style={{paddingTop:'80'}}>
-              <TableCell style={{ fontWeight: 'bold'  }}>PO #</TableCell>
+              <TableCell  >PO #</TableCell>
               <TableCell style={{ fontWeight: 'bold'  }}>Supplier</TableCell>
               <TableCell style={{ fontWeight: 'bold'  }}>Order Date</TableCell>
               <TableCell style={{ fontWeight: 'bold' }}>Status</TableCell>

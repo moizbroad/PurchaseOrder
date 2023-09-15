@@ -34,14 +34,14 @@ import AirportShuttleRoundedIcon from '@mui/icons-material/AirportShuttleRounded
 
 
 function ProductTable(props) {
-    const { selectedRows, setSelectedRows  } = props;
+    const { selectedRows, setSelectedRows } = props;
     // keep track selected data 
-  //  const [selectedData, setSelectedData] = useState([]);
+    //  const [selectedData, setSelectedData] = useState([]);
 
 
 
     // Initialize state to track selected rows
-   // const [selectedRows, setSelectedRows] = useState([]);
+    // const [selectedRows, setSelectedRows] = useState([]);
     // const [selectedRowsData, setSelectedRowsData] = useState([]);
 
     // ensure checkbox is selected
@@ -59,7 +59,8 @@ function ProductTable(props) {
             image: '',
             name: 'prod 1',
             category: 'cate1',
-            stock: 120
+            stock: 120,
+            placeholder: 1,
         },
         {
             id: '2',
@@ -67,7 +68,8 @@ function ProductTable(props) {
             image: '',
             name: 'prod 2',
             category: 'cate2',
-            stock: 87
+            stock: 87,
+            placeholder: 1,
         },
         {
             id: '3',
@@ -75,7 +77,8 @@ function ProductTable(props) {
             image: '',
             name: 'prod 3',
             category: 'cate3',
-            stock: 40
+            stock: 40,
+            placeholder: 1,
         },
         {
             id: '4',
@@ -83,149 +86,15 @@ function ProductTable(props) {
             image: '',
             name: 'prod 3',
             category: 'cate3',
-            stock: 30
+            stock: 30,
+            placeholder: 1,
         },
-        // {
-        //     id: 1,
-        //     col1: false, // Checkbox state
-        //     col2: <div style={{ width: 2, height: 2, borderRadius: 30, color: blue }}><AirportShuttleRoundedIcon /> </div>,
-        //     col3: 'Dog Towel',
-        //     col4: 'Catagory #1',
-        //     col5: '150',
-        //     col6: (
-        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        //             <button style={{ borderRadius: '50px' }}>+</button>
-        //             <input
-        //                 placeholder='0'
-        //                 style={{
-        //                     width: '50px',
-        //                     fontSize: '14px',
-        //                     borderRadius: '50px',
-        //                 }}
-        //             ></input>
-        //             <button style={{ borderRadius: '50px' }}>-</button>
-        //         </div>
-        //     ),
-        // },
-        // // Add more rows as needed
-        // {
-        //     id: 2,
-        //     col1: false, // Checkbox state
-        //     col2: <AirportShuttleRoundedIcon />,
-        //     col3: 'Dog Towel',
-        //     col4: 'Catagory #1',
-        //     col5: '150',
-        //     col6: (
-        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        //             <button style={{ borderRadius: '50px' }}>+</button>
-        //             <input
-        //                 placeholder='0'
-        //                 style={{
-        //                     width: '50px',
-        //                     fontSize: '14px',
-        //                     borderRadius: '50px',
-        //                 }}
-        //             ></input>
-        //             <button style={{ borderRadius: '50px' }}>-</button>
-        //         </div>
-        //     ),
-        // },
 
-        // {
-        //     id: 3,
-        //     col1: false, // Checkbox state
-        //     col2: <AirportShuttleRoundedIcon />,
-        //     col3: 'Dog Towel',
-        //     col4: 'Catagory #1',
-        //     col5: '150',
-        //     col6: (
-        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        //             <button style={{ borderRadius: '50px' }}>+</button>
-        //             <input
-        //                 placeholder='0'
-        //                 style={{
-        //                     width: '50px',
-        //                     fontSize: '14px',
-        //                     borderRadius: '50px',
-        //                 }}
-        //             ></input>
-        //             <button style={{ borderRadius: '50px' }}>-</button>
-        //         </div>
-        //     ),
-        // },
-
-        // {
-        //     id: 4,
-        //     col1: false, // Checkbox state
-        //     col2: <AirportShuttleRoundedIcon />,
-        //     col3: 'Dog Towel',
-        //     col4: 'Catagory #1',
-        //     col5: '150',
-        //     col6: (
-        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        //             <button style={{ borderRadius: '50px' }}>+</button>
-        //             <input
-        //                 placeholder='0'
-        //                 style={{
-        //                     width: '50px',
-        //                     fontSize: '14px',
-        //                     borderRadius: '50px',
-        //                 }}
-        //             ></input>
-        //             <button style={{ borderRadius: '50px' }}>-</button>
-        //         </div>
-        //     ),
-        // },
-
-        // {
-        //     id: 5,
-        //     col1: false, // Checkbox state
-        //     col2: <AirportShuttleRoundedIcon />,
-        //     col3: 'Dog Towel',
-        //     col4: 'Catagory #1',
-        //     col5: '150',
-        //     col6: (
-        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        //             <button style={{ borderRadius: '50px' }}>+</button>
-        //             <input
-        //                 placeholder='0'
-        //                 style={{
-        //                     width: '50px',
-        //                     fontSize: '14px',
-        //                     borderRadius: '50px',
-        //                 }}
-        //             ></input>
-        //             <button style={{ borderRadius: '50px' }}>-</button>
-        //         </div>
-        //     ),
-        // },
-
-        // {
-        //     id: 6,
-        //     col1: false, // Checkbox state
-        //     col2: <AirportShuttleRoundedIcon />,
-        //     col3: 'Dog Towel',
-        //     col4: 'Catagory #1',
-        //     col5: '150',
-        //     col6: (
-        //         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        //             <button style={{ borderRadius: '50px' }}>+</button>
-        //             <input
-        //                 placeholder='0'
-        //                 style={{
-        //                     width: '50px',
-        //                     fontSize: '14px',
-        //                     borderRadius: '50px',
-        //                 }}
-        //             ></input>
-        //             <button style={{ borderRadius: '50px' }}>-</button>
-        //         </div>
-        //     ),
-        // },
     ]);
 
 
     // Event handler to toggle row selection
+
     const handleRowSelect = (row) => {
         // Check if the row is already selected
         const isSelected = selectedRows.includes(row);
@@ -246,6 +115,19 @@ function ProductTable(props) {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
+
+    const handleInputChange = (id, newValue) => {
+        const updatedRows = rows.map((row) =>
+            row.id === id
+                ? {
+                    ...row,
+                    placeholder: newValue,
+                }
+                : row
+        );
+        setRows(updatedRows);
+    };
+
     const handleSelectAllClick = () => {
         const updatedRows = rows.map((row) => ({
             ...row,
@@ -256,25 +138,31 @@ function ProductTable(props) {
     };
 
 
+    // now pick button data 
+    // Handle checkbox click
     const handleCheckboxClick = (id) => {
         const updatedRows = rows.map((row) =>
             row.id === id
                 ? {
                     ...row,
                     col1: !row.col1, // Toggle the checkbox state
-                    placeholder: row.col1 ? '0' : row.stock.toString(), // Set the placeholder to stock value when checked, '0' when unchecked
                 }
                 : row
         );
+
         setRows(updatedRows);
-        // Filter the selected rows and update selectedRowsData
+
+        // Filter the selected rows and update selectedRows
         const selectedData = updatedRows.filter((row) => row.col1);
-        setSelectedRows(selectedData);
+        setSelectedRows(selectedData.map((row) => ({
+            ...row,
+            stock: parseInt(row.placeholder), // Update with the current button value (placeholder)
+        })));
     };
 
     const handleIncrement = (id) => {
         const updatedRows = rows.map((row) =>
-            row.id === id
+            row.id === id && parseInt(row.placeholder) < row.stock
                 ? {
                     ...row,
                     placeholder: (parseInt(row.placeholder) + 1).toString(),
@@ -284,9 +172,10 @@ function ProductTable(props) {
         setRows(updatedRows);
     };
 
+
     const handleDecrement = (id) => {
         const updatedRows = rows.map((row) =>
-            row.id === id && parseInt(row.placeholder) > 0 // Check if the row is selected and placeholder is greater than 0
+            row.id === id && parseInt(row.placeholder) > 1
                 ? {
                     ...row,
                     placeholder: (parseInt(row.placeholder) - 1).toString(),
@@ -297,8 +186,6 @@ function ProductTable(props) {
     };
 
 
-
-
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -307,6 +194,26 @@ function ProductTable(props) {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
+
+
+    // blur event check value must be write in stock 
+    const handleInputBlur = (id) => {
+        const updatedRows = rows.map((row) =>
+            row.id === id ? { ...row, placeholder: ensureWithinStock(row.stock, row.placeholder) } : row
+        );
+        setRows(updatedRows);
+    };
+
+    const ensureWithinStock = (stock, value) => {
+        const intValue = parseInt(value);
+        if (isNaN(intValue) || intValue < 1) {
+            return '1'; // If the input is not a number or less than 1, set it to 1
+        } else if (intValue > stock) {
+            return stock.toString(); // If the input is greater than stock, set it to stock
+        }
+        return value; // Otherwise, keep the input value as it is
+    };
+
 
 
 
@@ -327,9 +234,10 @@ function ProductTable(props) {
                         onChange={handleChange}
                         displayEmpty
                         inputProps={{ 'aria-label': ' ' }}
+                        sx={{ borderRadius: '10px' }}
                     >
                         <MenuItem value="" >
-                            <span> Filter ALL </span>
+                            <span> Filter (All) </span>
                         </MenuItem>
                         <MenuItem value={10}>Ten</MenuItem>
                         <MenuItem value={20}>Twenty</MenuItem>
@@ -399,19 +307,22 @@ function ProductTable(props) {
                                                         color: 'White',
                                                         backgroundColor: '#003087',
                                                     }}
-                                                    disabled={parseInt(row.placeholder) >= row.stock} // Disable the button when placeholder is greater than or equal to stock
+                                                    disabled={parseInt(row.placeholder) >= row.stock}
+                                                // Disable the button when placeholder is greater than or equal to stock
                                                 >
                                                     +
                                                 </button>
                                                 <input
-                                                    placeholder={row.placeholder || '0'}
+                                                    value={row.placeholder} // Use value instead of placeholder
                                                     style={{
                                                         width: '50px',
                                                         fontSize: '14px',
                                                         borderRadius: '50px',
                                                     }}
-                                                    readOnly // Make the input field read-only to prevent manual editing
+                                                    onChange={(e) => handleInputChange(row.id, e.target.value)}
+                                                    onBlur={() => handleInputBlur(row.id)}
                                                 />
+
                                                 <button
                                                     onClick={() => handleDecrement(row.id)}
                                                     style={{
