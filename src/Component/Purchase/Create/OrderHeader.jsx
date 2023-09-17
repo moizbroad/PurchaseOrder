@@ -22,7 +22,12 @@ const SupplierData = [
 ];
 
 const OrderHeader = (props) => {
-  const { handleButtonClick, selectedSupplier, setSelectedSupplier } = props;
+  const { handleButtonClick,
+     selectedSupplier,
+      setSelectedSupplier ,
+      orderTitle,
+      setOrderTitle
+    } = props;
 
   const handleIconClick = () => {
     handleButtonClick('purchaseOrder');
@@ -33,6 +38,9 @@ const OrderHeader = (props) => {
     const selectedLabel = SupplierData.find((supplier) => supplier.id == selectedId)?.label || '';
     setSelectedSupplier({ id: selectedId, label: selectedLabel });
   };
+
+   // stored custom text field data 
+ 
 
   return (
     <Container>
@@ -68,15 +76,19 @@ const OrderHeader = (props) => {
         autoComplete="off"
       >
         <TextField label="Order name" id="outlined-size-normal" defaultValue="Z# 12345" sx={{ flex: 1 }} />
-        <TextField label="Order Title" id="outlined-size-normal" defaultValue="Title" sx={{ flex: 1 }} />
+        <TextField label="Order Title" id="outlined-size-normal"
+          value={orderTitle}
+          onChange={(e) => setOrderTitle(e.target.value)}
+          sx={{ flex: 1 }} />
+
         <TextField
           id="outlined-select-currency"
           label="Supplier Data"
           select
-          
-        
+
+
           onChange={handleSupplierChange} // Call this function when the user selects a supplier
-         value={selectedSupplier.id} // Use selectedSupplier.id as the selected value
+          value={selectedSupplier.id} // Use selectedSupplier.id as the selected value
           sx={{ flex: 1 }}
         >
           {SupplierData.map((option) => (

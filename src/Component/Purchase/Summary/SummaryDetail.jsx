@@ -21,7 +21,16 @@ import {
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const SummaryDetail = (props) => {
-    const { handleButtonClick, selectedRows, selectedSupplier } = props
+    const { handleButtonClick,
+        selectedRows,
+        selectedSupplier,
+        field,
+        setField,
+        field2,
+        setField2
+
+
+    } = props
     //const {selectedRowsData} = props
 
 
@@ -30,11 +39,9 @@ const SummaryDetail = (props) => {
         handleButtonClick('createOrder'); // Change the component name as needed
     };
 
-    const [age, setAge] = React.useState('');
+    //const [age, setAge] = React.useState('');
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+
     return (
         <Container>
             <Box sx={{ width: "100%", }}>
@@ -70,7 +77,7 @@ const SummaryDetail = (props) => {
                     </Box>
                     <Box display="flex" flexGrow={1}> {/* Use flexGrow to take up available width */}
                         <p style={{ width: '50%', margin: 0 }}>Shipping</p> {/* Adjust width as needed */}
-                        <p style={{ width: '50%', margin: 0 }}>XXX</p> {/* Adjust width as needed */}
+                        <p style={{ width: '50%', margin: 0 }}>{props.field2}</p> {/* Adjust width as needed */}
                     </Box>
                 </Box>
 
@@ -82,17 +89,18 @@ const SummaryDetail = (props) => {
                         <Select
                             labelId="demo-simple-select-standard-label"
                             id="demo-simple-select-standard"
-                            value={age}
-                            onChange={handleChange}
-                            label="Age"
+
+
+
                             sx={{ width: '100%' }}
                         >
-                            <MenuItem value="">
-                                <em>None</em>
+
+                            <MenuItem>
+                                {props.field}
                             </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+
+
+
                         </Select>
                     </FormControl>
                 </div>
@@ -110,29 +118,13 @@ const SummaryDetail = (props) => {
 
                         <TableContainer component={Paper} >
                             <Table style={{ backgroundColor: '#F8FBFF', fontWeight: 'bold' }}>
-                                <TableHead>
-                                    <TableRow  >
-                                        <TableCell style={{ fontWeight: 'bold' }} ><Checkbox />
-                                        </TableCell>
-                                        <TableCell style={{ fontWeight: 'bold' }}>
-                                            Name
-                                        </TableCell>
-                                        <TableCell style={{ fontWeight: 'bold' }}>
-                                            Category
-                                        </TableCell>
-                                        <TableCell style={{ fontWeight: 'bold' }}>
-                                            Stock
-                                        </TableCell>
-                                        {/* Add more table headers as needed */}
-                                    </TableRow>
-                                </TableHead>
                                 <TableBody>
                                     {selectedRows.map((row) => (
                                         <TableRow key={row.id}>
-                                            <TableCell><checkbox /></TableCell>
+                                            <TableCell><input type="checkbox" checked /></TableCell>
                                             <TableCell>{row.name}</TableCell>
                                             <TableCell>{row.category}</TableCell>
-                                            <TableCell>{row.stock}</TableCell>
+                                            <TableCell>{row.newValue}</TableCell>
                                             {/* Add more table cells as needed */}
                                         </TableRow>
                                     ))}

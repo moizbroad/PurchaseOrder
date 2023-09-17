@@ -60,7 +60,7 @@ function ProductTable(props) {
             name: 'prod 1',
             category: 'cate1',
             stock: 120,
-            placeholder: 1,
+
         },
         {
             id: '2',
@@ -69,7 +69,7 @@ function ProductTable(props) {
             name: 'prod 2',
             category: 'cate2',
             stock: 87,
-            placeholder: 1,
+
         },
         {
             id: '3',
@@ -78,7 +78,7 @@ function ProductTable(props) {
             name: 'prod 3',
             category: 'cate3',
             stock: 40,
-            placeholder: 1,
+
         },
         {
             id: '4',
@@ -87,7 +87,7 @@ function ProductTable(props) {
             name: 'prod 3',
             category: 'cate3',
             stock: 30,
-            placeholder: 1,
+
         },
 
     ]);
@@ -95,17 +95,7 @@ function ProductTable(props) {
 
     // Event handler to toggle row selection
 
-    const handleRowSelect = (row) => {
-        // Check if the row is already selected
-        const isSelected = selectedRows.includes(row);
-        if (isSelected) {
-            // If selected, remove it from the selectedRows array
-            setSelectedRows(selectedRows.filter(selectedRow => selectedRow !== row));
-        } else {
-            // If not selected, add it to the selectedRows array
-            setSelectedRows([...selectedRows, row]);
-        }
-    };
+
 
 
 
@@ -121,7 +111,7 @@ function ProductTable(props) {
             row.id === id
                 ? {
                     ...row,
-                    placeholder: newValue,
+                    newValue
                 }
                 : row
         );
@@ -140,12 +130,13 @@ function ProductTable(props) {
 
     // now pick button data 
     // Handle checkbox click
-    const handleCheckboxClick = (id) => {
-        const updatedRows = rows.map((row) =>
+    const handleCheckboxClick = (id,) => {
+        const updatedRows = rows.map((row,) =>
             row.id === id
                 ? {
                     ...row,
-                    col1: !row.col1, // Toggle the checkbox state
+                    col1: !row.col1,
+
                 }
                 : row
         );
@@ -160,30 +151,9 @@ function ProductTable(props) {
         })));
     };
 
-    const handleIncrement = (id) => {
-        const updatedRows = rows.map((row) =>
-            row.id === id && parseInt(row.placeholder) < row.stock
-                ? {
-                    ...row,
-                    placeholder: (parseInt(row.placeholder) + 1).toString(),
-                }
-                : row
-        );
-        setRows(updatedRows);
-    };
 
 
-    const handleDecrement = (id) => {
-        const updatedRows = rows.map((row) =>
-            row.id === id && parseInt(row.placeholder) > 1
-                ? {
-                    ...row,
-                    placeholder: (parseInt(row.placeholder) - 1).toString(),
-                }
-                : row
-        );
-        setRows(updatedRows);
-    };
+
 
 
     const handleChangePage = (event, newPage) => {
@@ -301,7 +271,7 @@ function ProductTable(props) {
                                         <TableCell>{
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                                                 <button
-                                                    onClick={() => handleIncrement(row.id)}
+
                                                     style={{
                                                         borderRadius: '50px',
                                                         color: 'White',
@@ -313,7 +283,7 @@ function ProductTable(props) {
                                                     +
                                                 </button>
                                                 <input
-                                                    value={row.placeholder} // Use value instead of placeholder
+                                                    type='number'
                                                     style={{
                                                         width: '50px',
                                                         fontSize: '14px',
@@ -324,7 +294,7 @@ function ProductTable(props) {
                                                 />
 
                                                 <button
-                                                    onClick={() => handleDecrement(row.id)}
+
                                                     style={{
                                                         borderRadius: '50px',
                                                         color: 'White',

@@ -3,9 +3,11 @@ import { Container, Box, TextField, Typography, Button, Switch } from '@mui/mate
 import SummaryDetail from '../Summary/SummaryDetail';
 
 const OrderDetails = (props) => {
-    const { handleButtonClick } = props
+    const { handleButtonClick, field, setField, field2,
+        setField2 } = props
     const [checked, setChecked] = useState(false);
     const [showSummary, setShowSummary] = useState(false);
+
 
     const handleChange = () => {
         setChecked((prevChecked) => !prevChecked);
@@ -18,7 +20,7 @@ const OrderDetails = (props) => {
     return (
         <Container>
             <Box sx={{ width: '100%', maxWidth: 500, color: '#003087', marginLeft: 0, marginTop: 2 }}>
-                <Typography variant="h5" gutterBottom sx={{ color: '#003087' , fontWeight:'bold'}}>
+                <Typography variant="h5" gutterBottom sx={{ color: '#003087', fontWeight: 'bold' }}>
                     Create Details
                 </Typography>
             </Box>
@@ -27,25 +29,26 @@ const OrderDetails = (props) => {
                 <SummaryDetail handleButtonClick={handleButtonClick} />
             ) : (
                 <>
-                    <div style={{ display: 'flex' , borderRadius: '10px'}}>
+                    <div style={{ display: 'flex', borderRadius: '10px' }}>
                         <div>
                             <TextField
-                            
-            
-                            
+
+
+
                                 id="outlined-multiline-static"
                                 label="Add Notes"
                                 multiline
                                 rows={7}
-                                defaultValue="Default Value"
+                                value={field}
+                                onChange={(e) => setField(e.target.value)}
                                 sx={{
                                     width: '600px',
                                     borderRadius: '10px',
                                 }}
-                               
+
                                 variant="outlined"
-                               
-                               
+
+
                             />
                         </div>
 
@@ -55,10 +58,10 @@ const OrderDetails = (props) => {
                         }}>
 
                             <div style={{
-                                marginLeft:3 , display: 'flex',
+                                marginLeft: 3, display: 'flex',
 
                                 alignItems: 'center'
-                             }}>
+                            }}>
                                 <Typography variant="body" gutterBottom style={{}}>
                                     Add Default Shipping Address
                                 </Typography>
@@ -71,30 +74,31 @@ const OrderDetails = (props) => {
                                     />
 
                                 </div>
-                             </div>
+                            </div>
 
-                             <div style={{ display: 'coloum', marginTop: 2 }}>
+                            <div style={{ display: 'coloum', marginTop: 2 }}>
                                 <TextField
                                     id="outlined-multiline-static"
                                     label="Add Notes"
                                     multiline
                                     rows={3}
-                                    defaultValue="Default Value"
+                                    value={field2}
+                                    onChange={(e) => setField2(e.target.value)}
                                     style={{ width: '550px' }}
                                     variant="outlined"
                                 />
                             </div>
 
-                            <div style={{ display: 'flex',  marginTop: 12, width: '100%' , marginBottom:45}}>
+                            <div style={{ display: 'flex', marginTop: 12, width: '100%', marginBottom: 45 }}>
                                 <div style={{ flex: 1, margin: '0 4px' }}>
 
-                                    <Button variant="outlined" fullWidth  sx={{borderRadius: '10px'}}>
+                                    <Button variant="outlined" fullWidth sx={{ borderRadius: '10px' }}>
                                         Save Draft
                                     </Button>
                                 </div>
                                 <div style={{ flex: 1, margin: '0 4px' }}>
-                                    
-                                    <Button variant="contained" onClick={() => handleButtonClick('orderSummary')} fullWidth  sx={{borderRadius: '10px'}}>
+
+                                    <Button variant="contained" onClick={() => handleButtonClick('orderSummary')} fullWidth sx={{ borderRadius: '10px' }}>
                                         Proceed to Summary
                                     </Button>
                                 </div>

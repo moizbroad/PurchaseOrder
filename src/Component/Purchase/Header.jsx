@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -16,6 +16,8 @@ import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
     const { handleButtonClick } = props
+
+    const [search, setSearch] = useState();
 
     // main navigation 
     const navigate = useNavigate();
@@ -58,8 +60,8 @@ const Header = (props) => {
                             </Button>
 
                             <Button variant="outlined" className="custom-button" sx={{
-      borderRadius: '10px', // Adjust the border radius as needed
-    }}>
+                                borderRadius: '10px', // Adjust the border radius as needed
+                            }}>
 
                                 Manage Supplies
 
@@ -73,7 +75,7 @@ const Header = (props) => {
 
                     {'center'} paddingLeft={0} gap={1}  >
 
-                    <FormControl sx={{ mt: 1, backgroundColor: '#F8FBFF'}}>
+                    <FormControl sx={{ mt: 1, backgroundColor: '#F8FBFF' }}>
                         <Select
                             value={age}
                             onChange={handleChange}
@@ -98,6 +100,8 @@ const Header = (props) => {
 
                             variant="outlined"
                             placeholder="Search"
+                            type='text'
+                            onChange={(e) => setSearch(e.target.value)}
                             size="small"
                             InputProps={{
                                 endAdornment: (
