@@ -10,7 +10,10 @@ const PurchaseOrder = (props) => {
     orderTitle,
     setOrderTitle,
     handleCreateNewOrderClick,
- 
+    search,
+    setSearch
+
+
   } = props
 
   // const handleIconClick = () => {
@@ -22,8 +25,9 @@ const PurchaseOrder = (props) => {
   return (
     <>
       <Header handleButtonClick={handleButtonClick}
-      onClick={handleCreateNewOrderClick} />
-      <CustomTable />
+        onClick={handleCreateNewOrderClick}
+        search={search} setSearch={setSearch}  />
+      <CustomTable search={search} setSearch={setSearch} />
 
     </>
   )

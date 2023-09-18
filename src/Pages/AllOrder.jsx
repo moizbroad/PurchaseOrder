@@ -20,6 +20,11 @@ const AllOrder = () => {
 
   const [field2, setField2] = useState();
 
+
+  // table data 
+  const [search, setSearch] = useState("");
+
+
   useEffect(() => {
     if (activeComponent === 'purchaseOrder') {
       handleResetStates()
@@ -45,7 +50,13 @@ const AllOrder = () => {
 
       <div>
         {activeComponent === 'purchaseOrder' && (
-          <PurchaseOrder handleButtonClick={handleButtonClick} />
+          <PurchaseOrder handleButtonClick={handleButtonClick}
+          
+          // search data 
+          search={search}
+          setSearch={setSearch}
+
+          />
         )}
         {activeComponent === 'createOrder' && (<CreateOrder handleButtonClick={handleButtonClick}
           selectedRows={selectedRows}
@@ -62,6 +73,7 @@ const AllOrder = () => {
           field2={field2}
           setField2={setField2}
 
+            
         />)}
 
 

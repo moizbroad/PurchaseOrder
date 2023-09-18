@@ -79,7 +79,7 @@ const OrderDetails = (props) => {
                             <div style={{ display: 'coloum', marginTop: 2 }}>
                                 <TextField
                                     id="outlined-multiline-static"
-                                    label="Add Notes"
+                                    label="SHPIING ADDRESS" 
                                     multiline
                                     rows={3}
                                     value={field2}
@@ -98,7 +98,8 @@ const OrderDetails = (props) => {
                                 </div>
                                 <div style={{ flex: 1, margin: '0 4px' }}>
 
-                                    <Button variant="contained" onClick={() => handleButtonClick('orderSummary')} fullWidth sx={{ borderRadius: '10px' }}>
+                                    <Button variant="contained" 
+                                    onClick={() => handleButtonClick('orderSummary')} fullWidth sx={{ borderRadius: '10px' }}>
                                         Proceed to Summary
                                     </Button>
                                 </div>

@@ -15,9 +15,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const Header = (props) => {
-    const { handleButtonClick } = props
+    const { handleButtonClick,search, setSearch } = props
 
-    const [search, setSearch] = useState();
+    
 
     // main navigation 
     const navigate = useNavigate();
@@ -101,6 +101,7 @@ const Header = (props) => {
                             variant="outlined"
                             placeholder="Search"
                             type='text'
+                            value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             size="small"
                             InputProps={{

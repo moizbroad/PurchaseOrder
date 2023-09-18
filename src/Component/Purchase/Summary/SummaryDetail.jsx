@@ -61,6 +61,10 @@ const SummaryDetail = (props) => {
                 <Divider />
 
                 <Box display="flex" flexGrow={1} marginRight="4">
+                <Box gap={1}>
+                        <SupportAgentIcon />
+                        
+                    </Box>
                     <p style={{ width: '50%', margin: 0 }}>Supplier:</p>
                     <p style={{ width: '50%', margin: 0 }}>
                         {selectedSupplier ? selectedSupplier.label : 'No supplier selected'}
@@ -74,6 +78,7 @@ const SummaryDetail = (props) => {
                 <Box display="flex" alignItems="center" flexDirection="row">
                     <Box gap={1}>
                         <SupportAgentIcon />
+                        
                     </Box>
                     <Box display="flex" flexGrow={1}> {/* Use flexGrow to take up available width */}
                         <p style={{ width: '50%', margin: 0 }}>Shipping</p> {/* Adjust width as needed */}
