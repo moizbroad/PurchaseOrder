@@ -54,32 +54,32 @@ const OrderDetails = (props) => {
 
                         <div style={{
                             display: 'column', paddingLeft: 22,
-                            width: 500,
+                            width: '100%',
                         }}>
 
                             <div style={{
                                 marginLeft: 3, display: 'flex',
 
-                                alignItems: 'center'
+                                alignItems: 'center', justifyContent: 'space-between', width: '100%',	
                             }}>
                                 <Typography variant="body" gutterBottom style={{}}>
                                     Add Default Shipping Address
                                 </Typography>
 
-                                <div style={{ marginLeft: 180 }}>
+                                {/* <div style={{ marginLeft: 180 }}> */}
                                     <Switch
                                         checked={checked}
                                         onChange={handleChange}
                                         color="primary"
                                     />
 
-                                </div>
+                                {/* </div> */}
                             </div>
 
                             <div style={{ display: 'coloum', marginTop: 2 }}>
                                 <TextField
                                     id="outlined-multiline-static"
-                                    label="SHPIING ADDRESS" 
+                                    label="SHPIING ADDRESS"
                                     multiline
                                     rows={3}
                                     value={field2}
@@ -89,21 +89,20 @@ const OrderDetails = (props) => {
                                 />
                             </div>
 
-                            <div style={{ display: 'flex', marginTop: 12, width: '100%', marginBottom: 45 }}>
-                                <div style={{ flex: 1, margin: '0 4px' }}>
-
-                                    <Button variant="outlined" fullWidth sx={{ borderRadius: '10px' }}>
-                                        Save Draft
-                                    </Button>
-                                </div>
-                                <div style={{ flex: 1, margin: '0 4px' }}>
-
-                                    <Button variant="contained" 
-                                    onClick={() => handleButtonClick('orderSummary')} fullWidth sx={{ borderRadius: '10px' }}>
-                                        Proceed to Summary
-                                    </Button>
-                                </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 12, width: '100%', marginBottom: 45 }}>
+                                <Button variant="outlined" fullWidth sx={{ borderRadius: '10px' }}>
+                                    Save Draft
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    onClick={() => handleButtonClick('orderSummary')}
+                                    fullWidth
+                                    sx={{ borderRadius: '10px' }}
+                                >
+                                    Proceed to Summary
+                                </Button>
                             </div>
+
 
 
                         </div>

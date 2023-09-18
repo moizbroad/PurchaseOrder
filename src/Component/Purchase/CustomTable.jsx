@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, TablePagination, Paper, Typography, Box } from '@mui/material';
 
 
@@ -50,9 +50,8 @@ const CustomTable = (props) => {
     },
 
   ];
-      
-  const [datas, setDatas] = useState("")
 
+  const [datas, setDatas] = useState("")
 
   // Step 1: Define the number of rows per page options
   const rowsPerPageOptions = [5, 10, 25];
@@ -61,13 +60,23 @@ const CustomTable = (props) => {
   // Step 2: Initialize state for page and rowsPerPage
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
-
+  const [filteredData, setFilteredData] = useState(data);
 
   // Step 3: Handle page change
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+  useEffect(() => {
+    if (search) {
+      const filtered = data.filter((pdt) => pdt.supplier === search);
+      setFilteredData(filtered);
+      setPage(0); // Reset page when filtering
+    } else {
+      // If search is empty, show all data
+      setFilteredData(data);
+    }
+  }, [search, data]);
 
   // Step 4: Handle rows per page change
   const handleChangeRowsPerPage = (event) => {
@@ -79,6 +88,7 @@ const CustomTable = (props) => {
   // Step 5: Calculate the number of empty rows for styling
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
+  const filtered = data.filter((pdt) => pdt.supplier === search)
 
   return (
 
@@ -102,34 +112,23 @@ const CustomTable = (props) => {
 
           {/* Table body */}
           <TableBody>
-            {
-              (rowsPerPage > 0
-                ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                : data
-              )
-                .map((row) => {
-                  return (
-                    <>
-                      {
-                        search == row.supplier 
-                          ?
-                          < TableRow key={row.id} >
-                            <TableCell>{row.Title}</TableCell>
-                            <TableCell>{row.supplier}</TableCell>
-                            <TableCell>{row.OrderDate}</TableCell>
-                            <TableCell>{row.Status}</TableCell>
-                            <TableCell>${row.value}</TableCell>
-                          </TableRow>
-                          :
-                          console.log(search)
-                        
-
-
-                      }
-                    </>
-                  )
-                })
-            }
+            {filteredData
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.Title}</TableCell>
+                  <TableCell>{row.supplier}</TableCell>
+                  <TableCell>{row.OrderDate}</TableCell>
+                  <TableCell>{row.Status}</TableCell>
+                  <TableCell>${row.value}</TableCell>
+                </TableRow>
+              ))}
+            {/* Empty rows for consistent styling */}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <TableCell colSpan={3} />
+              </TableRow>
+            )}
 
             {/* Empty rows for consistent styling */}
             {emptyRows > 0 && (
